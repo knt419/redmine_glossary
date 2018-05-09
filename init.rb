@@ -46,7 +46,7 @@ end
 
 Redmine::WikiFormatting::Macros.register do
   desc 'Glossary term link by ID'
-  macro :termno do |args|
+  macro :termno do |obj, args|
     raise I18n.t(:error_termno_macro_arg) if args.size != 1
     tid = args[0].strip
     term = Term.find_by_id(tid.to_i)

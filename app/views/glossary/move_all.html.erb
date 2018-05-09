@@ -10,7 +10,7 @@
 <%   form = form_tag({project_id: @project}, id: 'move_all_form') do %>
 
 <div class="box tabular">
-<p><label for="new_project_id"><%=l(:label_movement_project)%>:</label>
+<p><label for="new_project_id"><%= l(:label_movement_project) %>:</label>
 <%=   select_tag "new_project_id",
                  project_tree_options_for_select(@allowed_projs) %>
 </p>

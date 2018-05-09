@@ -19,7 +19,7 @@
         <% unless category.new_record? %>
           <tr class="<%= cycle 'odd', 'even' %>">
             <td><%=category.position%></td>
-            <td><%=h(category.name) %></td>
+            <td><%=(category.name) %></td>
             <td><%=h(category.terms.size) %></td>
             <td align="center">
               <% if authorize_for("term_categories", "edit") %>

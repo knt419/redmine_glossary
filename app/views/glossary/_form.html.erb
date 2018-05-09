@@ -1,9 +1,9 @@
 
-<p><%= f.text_field :name, :label=>t('label.name'), size: 100, required: true %></p>
+<p><%= f.text_field :name, label: l('label.name'), size: 100, required: true %></p>
 
 <% for prm in Term.setting_params %>
   <% if param_visible?(prm) %>
-  <p><%= f.text_field prm, :label=>label_param(prm), size: 100 %></p>
+  <p><%= f.text_field prm, label: label_param(prm), size: 100 %></p>
   <% end %>
 <% end %>
 
@@ -24,7 +24,7 @@
                      class: 'icon icon-add', tabindex: 199) if authorize_for('glossary', 'add_term_category') %></p>
 <% end %>
 </div>
-<p><%= f.text_area :description, :label=>t('label.description'),
+<p><%= f.text_area :description, label: l('label.description'),
                    cols: 60,
                    rows: (@term.description.blank? ? 10 : [[10, @term.description.length / 50].max, 100].min),
                    accesskey: accesskey(:edit),
@@ -33,6 +33,6 @@
 
 
 <p />
-<p><label><%=l(:label_attachment_plural)%></label><%= render partial: 'attachments/form' %></p>
+<p><label><%= l(:label_attachment_plural) %></label><%= render partial: 'attachments/form' %></p>
 
 <%= wikitoolbar_for 'term_description' %>

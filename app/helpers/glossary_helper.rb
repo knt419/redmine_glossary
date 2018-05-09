@@ -6,23 +6,23 @@ module GlossaryHelper
     when 'id'
       '#'
     when 'project'
-      I18n.t(:label_project)
+      l(:label_project)
     when 'category'
-      I18n.t(:field_category)
+      l(:field_category)
     when 'datetime'
-      I18n.t(:field_updated_on)
+      l(:field_updated_on)
     when 'author'
-      I18n.t(:field_author)
+      l(:field_author)
     when 'updater'
-      I18n.t(:label_updater)
+      l(:label_updater)
     when 'created_on'
-      I18n.t(:field_created_on)
+      l(:field_created_on)
     when 'updated_on'
-      I18n.t(:field_updated_on)
+      l(:field_updated_on)
     when 'description'
-      I18n.t(:field_description)
+      l(:field_description)
     else
-      I18n.t("label.#{prmname}")
+      l("label.#{prmname}")
     end
   end
 

@@ -1,9 +1,7 @@
 module GlossaryPortHelper
-  # def glossary_csvout(csv, ic, ary)
   def glossary_csvout(csv, ary)
     csv << ary.collect do |c|
       begin
-        # ic.iconv(c.to_s)
         Redmine::CodesetUtil.from_utf8(c.to_s, l(:general_csv_encoding))
       rescue StandardError
         c.to_s
@@ -12,14 +10,12 @@ module GlossaryPortHelper
   end
 
   def glossary_to_csv(terms)
-    # ic = Iconv.new(l(:general_csv_encoding), 'UTF-8')
     export = FCSV.generate(col_sep: l(:general_csv_separator)) do |csv|
       # csv header fields
       headers = Term.export_params.collect do |prm|
         label_param(prm)
       end
 
-      # glossary_csvout(csv, ic, headers)
       glossary_csvout(csv, headers)
 
       # csv lines
@@ -27,7 +23,6 @@ module GlossaryPortHelper
         fields = Term.export_params.collect do |prm|
           term.param_to_s(prm)
         end
-        # glossary_csvout(csv, ic, fields)
         glossary_csvout(csv, fields)
       end
     end
@@ -37,8 +32,6 @@ module GlossaryPortHelper
   def glossary_from_csv(portinfo, projid)
     line_count = 0
     begin
-      # ic = Iconv.new('UTF-8', portinfo.in_encoding)
-
       raise l(:error_file_none)	unless portinfo.import_file
       FCSV.parse(portinfo.import_file.read) do |row|
         line_count += 1
@@ -46,9 +39,8 @@ module GlossaryPortHelper
         next	if row.empty?
 
         name = row[portinfo.param_col('name')]
-        raise format(l(:error_no_name), t('label.name'))	unless name
+        raise format(l(:error_no_name), l('label.name'))	unless name
 
-        # name = ic.iconv(name)
         name = Redmine::CodesetUtil.to_utf8(name, portinfo.in_encoding)
         term = Term.find_by(project_id: projid, name: name)
         if term
@@ -61,7 +53,6 @@ module GlossaryPortHelper
         for col in 0...row.size
           prm = portinfo.col_param(col)
           next	unless prm
-          # val = ic.iconv(row[col].to_s)
           val = Redmine::CodesetUtil.to_utf8(row[col].to_s, portinfo.in_encoding)
           case prm
           when 'name'

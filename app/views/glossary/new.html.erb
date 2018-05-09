@@ -1,4 +1,4 @@
-<h2><%=l(:label_term_new)%></h2>
+<h2><%= l(:label_term_new) %></h2>
 
 <% form = labelled_form_for @term, as: :term,
                              url: {action: 'new', project_id: @project, id: @term},

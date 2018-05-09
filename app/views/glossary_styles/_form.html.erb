@@ -5,11 +5,11 @@
   add_search_params(urlopts)
   form = form_for @glossary_style, url: urlopts do |f| %>
 
-  
-<label> <%= f.check_box "show_desc" %> <%= l(:label_glossary_style_show_desc) %> </label>
-<br />
 
-<%=h l(:label_project) %>
+<label> <%= f.check_box "show_desc" %> <%= l(:label_glossary_style_show_desc) %> </label>
+<br>
+
+<%= l(:label_project) %>
 <%=
     options = []
     options << [l(:label_glossary_style_project_current), GlossaryStyle::PROJECT_CURRENT]
@@ -33,7 +33,7 @@
 
 <fieldset id="sort"><legend><%= l(:label_sort) %></legend>
 <% for cnt in 0...2 %>
-  <%= cnt+1 %> : <%= params_select(f, "sort_item_#{cnt}", default_sort_params) %><br />
+  <%= cnt+1 %> : <%= params_select(f, "sort_item_#{cnt}", default_sort_params) %><br>
 <% end %>
 </fieldset>
 

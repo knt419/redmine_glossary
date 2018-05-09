@@ -1,22 +1,22 @@
 <table class="list glossary">
 <thead><tr align="left">
 <th>#</th>
-<th><%=h t('label.name')     %></th>
+<th><%= l('label.name')     %></th>
 <% for prm in @show_params %>
-  <th><%=h label_param(prm) %></th>
+  <th><%= label_param(prm) %></th>
 <% end %>
-<th><%=h l(:field_description)%></th>
+<th><%= l(:field_description) %></th>
 <th></th>
 </tr></thead>
 <tbody>
 <% for term in index_in_category -%>
 <tr class="<%= cycle("odd", "even") %> term">
-<td><%=h term.id       %></td>
+<td><%= term.id       %></td>
 <td><%= term_link(term) %></td>
 <% for prm in @show_params %>
-<td><%=h term.value(prm) %></td>
+<td><%= term.value(prm) %></td>
 <% end %>
-<!--td><%=h truncate(term.description, :length=>50) %></td-->
+<!--td><%= truncate(term.description, :length=>50) %></td-->
 <td><%=textilizable term.description %></td>
 <td align="right" width="40px">
   <% if term.project_id == @project.id %>
@@ -28,4 +28,4 @@
 <% end %>
 </tbody>
 </table>
-<br />
+<br>

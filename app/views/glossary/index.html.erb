@@ -9,12 +9,12 @@ if params[:search_index_ch]
   subtitlle = "- #{params[:search_index_ch]} -"
 end %>
 
-<h1><%= t('glossary_title') %> <%= subtitlle %>  </h1>
+<h1><%= l(:glossary_title) %> <%= subtitlle %>  </h1>
 
-<br />
+<br>
 <% if User.current.allowed_to?(:view_terms, @project, global: true) %>
   <%= render partial: 'glossary_styles/search'  %>
-  <br />
+  <br>
 <% end %>
 
 <% tempname = "glossary/#{@glossary_style.show_desc ? 'show_all' : 'index'}_in_category" %>

@@ -10,12 +10,12 @@
 
 <table>
 
-<tr><th><%=h l(:label_search) %></th>
+<tr><th><%= l(:label_search) %></th>
 <td>
 <%= text_field_tag("search_str", params[:search_str]) %>
 </td></tr>
 
-<tr><th><%=h l(:field_category) %></th>
+<tr><th><%= l(:field_category) %></th>
 <td>
 <%=
     select_tag(:search_category,
@@ -25,10 +25,10 @@
 %>
 </td></tr>
 
-<tr><th><%=h l(:label_latest) %></th>
+<tr><th><%= l(:label_latest) %></th>
 <td>
 <%= text_field_tag("latest_days", params[:latest_days], :size=>'10') %>
-<%=h l(:label_indays) %>
+<%= l(:label_indays) %>
 </td></tr>
 </table>
 

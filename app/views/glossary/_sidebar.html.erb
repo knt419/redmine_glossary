@@ -3,29 +3,29 @@
   <h3><%= l(:label_view) %></h3>
   <%= render partial: 'glossary_styles/form',
 	   object: @view_style %>
-  <br />
+  <br>
 <% end %>
 
 
 <% if User.current.allowed_to?(:manage_terms, @project, global: true) %>
   <h3><%= l(:label_term) %></h3>
   <%= link_to l(:label_term_new), {controller: 'glossary', action: 'new', project_id: @project}, class: 'icon icon-add' %>
-  <br />
+  <br>
 <%   if Term.find_by(project_id: @project) %>
   <%= link_to_if_authorized(l(:label_move_all_terms), {controller: 'glossary', action: 'move_all', project_id: @project}, class: 'icon icon-move') %>
-  <br />
+  <br>
 <%   end %>
   <%= link_to l(:label_glossary_import_csv), {controller: 'glossary', action: 'import_csv', project_id: @project} %>
-  <br />
+  <br>
 <% end %>
 
 
 <% if User.current.allowed_to?(:manage_term_categories, @project, global: true) %>
   <h3><%= l(:label_term_category) %></h3>
   <%= link_to l(:label_term_category_new), {controller: 'glossary', action: 'add_term_category', project_id: @project}, class: 'icon icon-add' %>
-  <br />
+  <br>
   <%= link_to l(:label_manage_term_category), { controller: 'term_categories', action: 'index', project_id: @project } %>
-  <br />
+  <br>
 <% end %>
 
 
@@ -38,7 +38,7 @@
 </div>
 <% end %>
   <%= search_index_table(l(:index_ary_en), l(:index_ary_en_sep_cnt), @project, 'en') %>
-  <br />
+  <br>
   <%= search_index_table(l(:index_ary), l(:index_ary_sep_cnt), @project) %>
-  <br />
+  <br>
 <% end %>

@@ -3,13 +3,13 @@
 <table class="term_items">
 <% for prm in @show_params %>
   <tr>
-    <th><%=h label_param(prm) %>:</th><td><%= term.value(prm) %></td>
+    <th><%= label_param(prm) %>:</th><td><%= term.value(prm) %></td>
   </tr>
 <% end %>
 </table>
 
 <% unless (term.description.empty?) %>
-  <strong><%=l(:field_description)%></strong>:
+  <strong><%= l(:field_description) %></strong>:
   <div class="wiki">
     <%= textilizable term, :description, attachments: term.attachments %>
   </div>
